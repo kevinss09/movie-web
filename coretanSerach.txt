@@ -1,0 +1,44 @@
+import axios from "axios";
+import "./assets/css/app.css";
+import React, { useState, useEffect } from "react";
+
+const options = {
+	method: "GET",
+	url: "https://imdb188.p.rapidapi.com/api/v1/searchIMDB",
+	params: { query: "game" },
+	headers: {
+		"X-RapidAPI-Key": "96dea43cf0msh16cee8eeb59cfe5p1dde9djsn4ece0e1d9986",
+		"X-RapidAPI-Host": "imdb188.p.rapidapi.com",
+	},
+};
+
+function App() {
+	const [movies, setMovies] = useState([]);
+
+	useEffect(() => {
+		async function fetchData() {
+			const response = await axios.request(options);
+			const items = response.data;
+			setMovies(items);
+		}
+
+		fetchData();
+	}, []);
+
+	console.log(movies.data);
+	return (
+		<div className="App">
+			{movies.data.map((movie, index) => {
+				return (
+					<div>
+						<h1>{movie.title}</h1>
+						<img src={movie.image} alt="" className="" />
+					</div>
+				);
+			})}
+			<h1 className="">Hello</h1>
+		</div>
+	);
+}
+
+export default App;
