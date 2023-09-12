@@ -40,7 +40,7 @@ export default function Home() {
 	return (
 		<>
 			<div className="home min-h-screen mx-20 relative">
-				<div className="-mx-20 h-[55rem] overflow-hidden flex items-center justify-center relative">
+				<div className="-mx-20 h-[50rem] overflow-hidden flex items-center justify-center relative">
 					<Header />
 					<ImageHomeCarousel movies={movies} url={options.url} />
 				</div>
